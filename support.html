@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Netoff</title>
+<meta name="description" content="Help for Netoff: getting started, approving the network extension, troubleshooting, uninstalling, and how to reach us.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://boxhezibox.github.io/netoff/support.html">
+<link rel="alternate" hreflang="en" href="https://boxhezibox.github.io/netoff/support.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://boxhezibox.github.io/netoff/zh/support.html">
+<link rel="alternate" hreflang="x-default" href="https://boxhezibox.github.io/netoff/support.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Support — Netoff">
+<meta property="og:description" content="Help for Netoff: getting started, approving the network extension, troubleshooting, uninstalling, and how to reach us.">
+<meta property="og:image" content="https://boxhezibox.github.io/netoff/assets/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="./" aria-label="Netoff"><img src="assets/icon-180.png" alt="" width="30" height="30"><span>Netoff</span></a>
+  <a class="link hide-sm" href="index.html">Home</a>
+  <a class="link" href="support.html" aria-current="page">Support</a>
+  <a class="link" href="privacy.html">Privacy</a>
+  <a class="lang" href="zh/support.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+</div></header>
+<main id="main">
+
+<div class="wrap doc">
+  <div class="head"><div class="eyebrow">Support</div><h1>How can we help?</h1>
+  <p class="meta">Netoff for Mac · requires macOS 15 or later</p></div>
+  <div class="support-cards">
+    <a class="card bg-b" href="#start"><div class="emo" style="font-size:28px">🚀</div><h3>Getting started</h3><p>Turn on protection and approve the extension.</p></a>
+    <a class="card bg-y" href="#trouble"><div class="emo" style="font-size:28px">🛠</div><h3>Troubleshooting</h3><p>Stuck on “Connecting…”, or nothing is blocked?</p></a>
+    <a class="card bg-p" href="#contact"><div class="emo" style="font-size:28px">💬</div><h3>Contact</h3><p>Report a bug or ask a question.</p></a>
+  </div>
+  <article>
+    <h2 id="start">Getting started</h2>
+    <ol>
+      <li>Open Netoff and switch <strong>protection</strong> on.</li>
+      <li>macOS asks you to allow the network extension. Open <strong>System Settings › General › Login Items &amp; Extensions › Network Extensions</strong> and switch Netoff on. If macOS shows a prompt about filtering network content, choose Allow.</li>
+      <li>Come back to Netoff. The status reads “Protection is on”. Choose a mode on the Overview page.</li>
+    </ol>
+    <h3>The three modes</h3>
+    <ul>
+      <li><strong>Blocklist</strong> — everything is allowed except the apps and addresses you block. On the Apps page, set an app to “Block”.</li>
+      <li><strong>App allowlist</strong> — each app must be approved before it first connects. A prompt appears; choose how long to allow it.</li>
+      <li><strong>Domain / IP allowlist</strong> — every unfamiliar domain or IP needs approval. In the prompt, allow just that address, its whole domain, or all connections of that app. Setting an app to “Allow” on the Apps page trusts it fully, so it is never asked about again.</li>
+    </ul>
+    <div class="callout"><span class="emo">💡</span><p>Approval prompts count down for 120 seconds, starting when the prompt appears. If you don't answer, that one connection is denied — no rule is created.</p></div>
+
+    <h2 id="trouble">Troubleshooting</h2>
+    <details open><summary>The status stays on “Connecting…” or protection won't turn on</summary><div class="a"><p>Check that Netoff is switched on under System Settings › General › Login Items &amp; Extensions › Network Extensions. Then turn protection off and on again in Netoff. If that doesn't help, open Settings › Network Extension › <strong>Reinstall Extension</strong>, and restart your Mac if macOS asks you to.</p></div></details>
+    <details><summary>An app isn't being blocked</summary><div class="a"><p>Make sure protection is on (green) and that the app is set to “Block” on the Apps page — or switched off in the menu bar panel. A block applies to new connections; a connection that was already open may stay open until the app closes it. Some apps keep a connection alive for a long time.</p></div></details>
+    <details><summary>Everything stopped working after I changed a mode</summary><div class="a"><p>In the allowlist modes, anything not yet approved waits for your answer. Open Netoff and answer the prompt, or switch back to Blocklist mode from the menu bar. Tip: set your browser and other must-have apps to “Allow” on the Apps page first.</p></div></details>
+    <details><summary>I see “Unknown process” or “Exited process”</summary><div class="a"><p>A program opened a connection and quit before macOS could tell Netoff who it was. This is normal for very short-lived processes.</p></div></details>
+    <details><summary>The connection log says it's unavailable</summary><div class="a"><p>The log is kept by the network extension, so protection must be on to read it. Turn protection on and reopen the Connection Log tab.</p></div></details>
+    <details><summary>I'm not getting notifications</summary><div class="a"><p>Check Settings › Notifications in Netoff, and that Netoff is allowed to send notifications in System Settings › Notifications. Each blocked app triggers one notification; allowing and blocking it again resets that.</p></div></details>
+    <details><summary>Does it work with a VPN or proxy app?</summary><div class="a"><p>Netoff filters connections app by app on your Mac. If you use a VPN or proxy app, its own connections show up under that app's name. Other filtering tools can interact in unexpected ways; if something looks wrong, turn the others off and tell us what you saw.</p></div></details>
+
+    <h2 id="uninstall">Uninstalling</h2>
+    <ol>
+      <li>In Netoff, open <strong>Settings › Network Extension › Uninstall Extension…</strong>.</li>
+      <li>If you want to remove your data too, first use <strong>Clear Log</strong>, <strong>Clear Report</strong> and <strong>Reset All Rules…</strong> (see the <a href="privacy.html#delete">privacy policy</a>).</li>
+      <li>Quit Netoff and move it to the Trash.</li>
+    </ol>
+
+    <h2 id="contact">Contact us</h2>
+    <p>Found a bug, or have an idea? Please <a href="https://github.com/boxhezibox/netoff/issues"><strong>open an issue on GitHub</strong></a>. A good report says:</p>
+    <ul>
+      <li>your macOS version and Netoff version (shown in the Netoff menu › About);</li>
+      <li>what you did, what you expected, and what happened instead;</li>
+      <li>a screenshot, if it helps.</li>
+    </ul>
+    <div class="callout"><span class="emo">🔒</span><p>Issues on GitHub are public. Please don't include private information — such as the names of sites you visit, or your connection log — in a report.</p></div>
+  </article>
+</div>
+</main>
+<footer><div class="wrap">
+  <span>© 2026 Netoff · Netoff is an independent Mac app. Apple, Mac, macOS and the Mac App Store are trademarks of Apple Inc.</span>
+  <span class="links"><a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="https://github.com/boxhezibox/netoff/issues">GitHub</a></span>
+</div></footer>
+</body>
+</html>
