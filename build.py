@@ -91,7 +91,7 @@ HOME = {
   <h1>Decide which apps get <span class="mark">online</span>.</h1>
   <p class="sub">Netoff cuts off the internet for any app on your Mac. Or flip it around: approve every app, and every domain, before it connects.</p>
   <div class="cta"><a class="btn primary" href="#how">See how it works</a><a class="btn ghost" href="support.html">Get support</a></div>
-  <div class="art">{d.HERO}</div>
+  <div class="art">{d.hero("en")}</div>
 </div>
 
 <section id="modes"><div class="wrap">
@@ -102,6 +102,20 @@ HOME = {
     <div class="card bg-b"><div class="ic">{d.icon_apps()}</div><h3>App allowlist</h3><p>Every app asks first. Approve it once, for an hour, or forever — or say no.</p></div>
     <div class="card bg-y"><div class="ic">{d.icon_domains()}</div><h3>Domain &amp; IP allowlist</h3><p>Go further: every unfamiliar domain or IP needs your OK. Or trust an app completely with one click.</p></div>
   </div>
+</div></section>
+
+<section><div class="wrap split rev">
+  <div class="text">
+    <div class="eyebrow">Approvals</div>
+    <h2>Asked before it connects.</h2>
+    <p>In an allowlist mode, a small window opens in the middle of your screen when an app wants to connect. Choose how long to allow it — once, for an hour, or forever — or say no.</p>
+    <ul class="ticks">
+      <li>In Domain / IP mode, allow just that address, its whole domain, or every connection from that app</li>
+      <li>Requests queue up, and each one counts down for 120 seconds from the moment it is on screen</li>
+      <li>No answer? That one connection is denied — no rule is created</li>
+    </ul>
+  </div>
+  <div>{d.prompt("en")}</div>
 </div></section>
 
 <section><div class="wrap split">
@@ -115,7 +129,7 @@ HOME = {
       <li>Change the mode without opening the window</li>
     </ul>
   </div>
-  <div>{d.MENUBAR}</div>
+  <div>{d.menubar("en")}</div>
 </div></section>
 
 <section><div class="wrap split rev">
@@ -130,7 +144,7 @@ HOME = {
       <li>Search it, export it as CSV, clear it whenever you like</li>
     </ul>
   </div>
-  <div>{d.REPORT}</div>
+  <div>{d.report("en")}</div>
 </div></section>
 
 <section><div class="wrap">
@@ -152,7 +166,7 @@ HOME = {
     <p>No account. No analytics. No ads. No servers. Netoff contains no code that sends data anywhere — it only watches what your other apps do. Your rules, logs and reports live on your Mac and nowhere else.</p>
     <a class="btn primary" href="privacy.html">Read the privacy policy</a>
   </div>
-  <div>{d.LOCAL}</div>
+  <div>{d.local("en")}</div>
 </div></div></section>
 
 <section id="how"><div class="wrap">
@@ -190,7 +204,7 @@ HOME = {
   <h1><span class="nb">让哪些应用<span class="mark">联网</span>，</span><span class="nb">由自己决定。</span></h1>
   <p class="sub">Netoff 可以按应用切断 Mac 的网络访问；也可以反过来，让每个应用、每个域名在联网前都先获得批准。</p>
   <div class="cta"><a class="btn primary" href="#how">了解工作方式</a><a class="btn ghost" href="support.html">获取支持</a></div>
-  <div class="art">{d.HERO}</div>
+  <div class="art">{d.hero("zh")}</div>
 </div>
 
 <section id="modes"><div class="wrap">
@@ -201,6 +215,20 @@ HOME = {
     <div class="card bg-b"><div class="ic">{d.icon_apps()}</div><h3>应用白名单</h3><p>每个应用联网前都要先问一声。可以允许一次、一小时或永久，也可以拒绝。</p></div>
     <div class="card bg-y"><div class="ic">{d.icon_domains()}</div><h3>域名 / IP 白名单</h3><p>更进一步：每个陌生的域名或 IP 被访问前都需要批准。对信任的应用，一键放行它的全部连接。</p></div>
   </div>
+</div></section>
+
+<section><div class="wrap split rev">
+  <div class="text">
+    <div class="eyebrow">批准</div>
+    <h2>联网之前，先问一声。</h2>
+    <p>在白名单模式下，应用想要联网时，屏幕中央会弹出一个小窗口。可以选择允许一次、一小时或永久，也可以拒绝。</p>
+    <ul class="ticks">
+      <li>域名 / IP 模式下，可只允许该地址、允许整个域名，或放行该应用的全部连接</li>
+      <li>请求依次排队，每个请求从显示在屏幕上起倒计时 120 秒</li>
+      <li>没有回应则只拒绝这一次连接，不会生成规则</li>
+    </ul>
+  </div>
+  <div>{d.prompt("zh")}</div>
 </div></section>
 
 <section><div class="wrap split">
@@ -214,7 +242,7 @@ HOME = {
       <li>不用打开主窗口，就能切换模式</li>
     </ul>
   </div>
-  <div>{d.MENUBAR}</div>
+  <div>{d.menubar("zh")}</div>
 </div></section>
 
 <section><div class="wrap split rev">
@@ -229,7 +257,7 @@ HOME = {
       <li>可搜索、导出为 CSV，也可随时清除</li>
     </ul>
   </div>
-  <div>{d.REPORT}</div>
+  <div>{d.report("zh")}</div>
 </div></section>
 
 <section><div class="wrap">
@@ -251,7 +279,7 @@ HOME = {
     <p>没有账号，没有统计分析，没有广告，没有服务器。Netoff 不含任何向外发送数据的代码，只观察其他应用的联网行为。规则、日志和报告只保存在这台 Mac 上。</p>
     <a class="btn primary" href="privacy.html">阅读隐私政策</a>
   </div>
-  <div>{d.LOCAL}</div>
+  <div>{d.local("zh")}</div>
 </div></div></section>
 
 <section id="how"><div class="wrap">
