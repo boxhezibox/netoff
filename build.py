@@ -337,7 +337,7 @@ PRIVACY = {
     <p>Everything below is stored only on your Mac, in Netoff's own storage. None of it is uploaded.</p>
     <table>
       <tr><th>Data</th><th>Why</th><th>How long</th></tr>
-      <tr><td>Your rules: blocked and allowed apps, domains and IP addresses, and your settings</td><td>To enforce your choices</td><td>Until you change or reset them</td></tr>
+      <tr><td>Your rules: blocked and allowed apps, domains and IP addresses, and your settings — kept as a readable file you can open and edit (<code>~/Library/Application Support/Netoff/rules.json</code>)</td><td>To enforce your choices</td><td>Until you change or reset them</td></tr>
       <tr><td>Activity list (open connections and the last few minutes)</td><td>To show what is happening now</td><td>Kept in memory only; gone when you quit Netoff</td></tr>
       <tr><td>Privacy report: which apps contacted which domains, with counts</td><td>To show the Privacy Report</td><td>7 days, then removed automatically</td></tr>
       <tr><td>Connection log: one entry per connection</td><td>To let you review past connections</td><td>As you choose: off, 7, 14 or 30 days, or a size cap of 5, 10 or 200&nbsp;MB. The size cap is a hard limit — the oldest entries are removed so the log never exceeds it. Default: 7 days</td></tr>
@@ -361,7 +361,7 @@ PRIVACY = {
       <li><strong>Connection log:</strong> Privacy Report › Connection Log › Clear Log. Or set it to “Don’t Keep a Log”.</li>
       <li><strong>Privacy report:</strong> Privacy Report › Clear Report.</li>
       <li><strong>Activity list:</strong> Activity › Clear, or quit Netoff.</li>
-      <li><strong>Rules:</strong> Settings › Reset All Rules…</li>
+      <li><strong>Rules:</strong> Settings › Reset All Rules… (or edit or delete <code>rules.json</code>)</li>
       <li><strong>Everything:</strong> do the above, then choose Settings › Uninstall Extension… and move Netoff to the Trash.</li>
     </ul>
 
@@ -399,7 +399,7 @@ PRIVACY = {
     <p>以下内容全部只保存在这台 Mac 上 Netoff 自己的存储空间中，不会上传。</p>
     <table>
       <tr><th>数据</th><th>用途</th><th>保留时间</th></tr>
-      <tr><td>规则：被阻止和被允许的应用、域名、IP 地址，以及设置</td><td>执行所做的选择</td><td>直到修改或重置</td></tr>
+      <tr><td>规则：被阻止和被允许的应用、域名、IP 地址，以及设置，保存为可直接打开和编辑的文件（<code>~/Library/Application Support/Netoff/rules.json</code>）</td><td>执行所做的选择</td><td>直到修改或重置</td></tr>
       <tr><td>网络活动列表（当前连接和最近几分钟）</td><td>显示此刻的情况</td><td>仅保存在内存中，退出 Netoff 后消失</td></tr>
       <tr><td>隐私报告：哪些应用联系了哪些域名及次数</td><td>用于显示隐私报告</td><td>7 天，之后自动删除</td></tr>
       <tr><td>连接日志：每个连接一条记录</td><td>方便回顾过去的连接</td><td>由用户选择：关闭、7、14 或 30 天，或限制为 5、10、200&nbsp;MB。大小上限是硬上限，会删除最旧的记录以确保日志不超过它。默认 7 天</td></tr>
@@ -423,7 +423,7 @@ PRIVACY = {
       <li><strong>连接日志：</strong>隐私报告 › 连接日志 › 清除日志；或设为“不记录日志”。</li>
       <li><strong>隐私报告：</strong>隐私报告 › 清除报告。</li>
       <li><strong>网络活动列表：</strong>网络活动 › 清除，或退出 Netoff。</li>
-      <li><strong>规则：</strong>设置 › 重置所有规则…</li>
+      <li><strong>规则：</strong>设置 › 重置所有规则…（或编辑、删除 <code>rules.json</code>）</li>
       <li><strong>全部数据：</strong>完成上述操作后，选择 设置 › 卸载扩展…，再把 Netoff 移到废纸篓。</li>
     </ul>
 
@@ -468,6 +468,7 @@ SUPPORT = {
       <li><strong>Domain / IP allowlist</strong> — every unfamiliar domain or IP needs approval. In the prompt, allow just that address, its whole domain, or all connections of that app. Setting an app to “Allow” on the Apps page trusts it fully, so it is never asked about again.</li>
     </ul>
     <div class="callout"><span class="emo">💡</span><p>Approval prompts count down for 120 seconds, starting when the prompt appears. If you don't answer, that one connection is denied — no rule is created.</p></div>
+    <p>Prefer a text editor? Your rules live in a plain file you can edit — see <a href="#rules-file">Editing the rules file</a>.</p>
 
     <h2 id="trouble">Troubleshooting</h2>
     <details open><summary>The status stays on “Connecting…” or protection won't turn on</summary><div class="a"><p>Check that Netoff is switched on under System Settings › General › Login Items &amp; Extensions › Network Extensions. Then turn protection off and on again in Netoff. If that doesn't help, open Settings › Network Extension › <strong>Reinstall Extension</strong>, and restart your Mac if macOS asks you to.</p></div></details>
@@ -477,6 +478,41 @@ SUPPORT = {
     <details><summary>The connection log says it's unavailable</summary><div class="a"><p>The log is kept by the network extension, so protection must be on to read it. Turn protection on and reopen the Connection Log tab.</p></div></details>
     <details><summary>I'm not getting notifications</summary><div class="a"><p>Check Settings › Notifications in Netoff, and that Netoff is allowed to send notifications in System Settings › Notifications. Each blocked app triggers one notification; allowing and blocking it again resets that.</p></div></details>
     <details><summary>Does it work with a VPN or proxy app?</summary><div class="a"><p>Netoff filters connections app by app on your Mac. If you use a VPN or proxy app, its own connections show up under that app's name. Other filtering tools can interact in unexpected ways; if something looks wrong, turn the others off and tell us what you saw.</p></div></details>
+
+    <h2 id="rules-file">Editing the rules file</h2>
+    <p>Netoff keeps your rules in a plain text file that you can open and edit: <code>~/Library/Application Support/Netoff/rules.json</code>. Open it with the document button in the toolbar of the Apps or Domains &amp; IPs page, or from Settings › Rules File. When you save it, Netoff applies the new rules <strong>immediately</strong> — no restart. The <strong>Reload Rules</strong> button reads it again on demand.</p>
+    <h3>Example</h3>
+    <pre><code>{{
+  "mode": "blocklist",
+  "allowSystemServices": true,
+  "allowWhenNoUI": true,
+  "logRetention": "days7",
+  "apps": [
+    {{ "app": "com.apple.Safari", "action": "deny", "expires": null }},
+    {{ "app": "/usr/bin/curl", "action": "deny", "expires": "2026-10-20T18:00:00Z" }}
+  ],
+  "hosts": [
+    {{ "pattern": "*.example.com", "action": "deny", "app": null }},
+    {{ "pattern": "*", "action": "allow", "app": "com.google.Chrome" }}
+  ]
+}}</code></pre>
+    <h3>What each key does</h3>
+    <table>
+      <tr><th>Key</th><th>Meaning</th></tr>
+      <tr><td><code>mode</code></td><td><code>"blocklist"</code>, <code>"appAllowlist"</code> or <code>"hostAllowlist"</code></td></tr>
+      <tr><td><code>allowSystemServices</code>, <code>allowWhenNoUI</code></td><td><code>true</code> or <code>false</code> — the two options under Settings › Allowlist Modes</td></tr>
+      <tr><td><code>logRetention</code></td><td><code>"off"</code>, <code>"days7"</code>, <code>"days14"</code>, <code>"days30"</code>, <code>"mb5"</code>, <code>"mb10"</code> or <code>"mb200"</code></td></tr>
+      <tr><td><code>apps[]</code></td><td>One rule per app. <code>app</code> is a bundle ID (such as <code>com.apple.Safari</code>) or the path of an app; <code>action</code> is <code>"allow"</code> or <code>"deny"</code>; <code>expires</code> is optional. <code>name</code> and <code>path</code> are optional labels.</td></tr>
+      <tr><td><code>hosts[]</code></td><td>One rule per address. <code>pattern</code> is a domain (<code>example.com</code>), a domain with all its subdomains (<code>*.example.com</code>), an IP address, or <code>*</code> for everything. <code>app</code> limits the rule to one app, or <code>null</code> for all apps.</td></tr>
+    </table>
+    <ul>
+      <li>A key you leave out uses its default, so a file with only a <code>hosts</code> list is fine.</li>
+      <li>Dates are written like <code>2026-10-20T18:00:00Z</code> (UTC). Use <code>null</code> for “never expires”. Expired rules are removed automatically.</li>
+      <li>JSON has no comments, and a trailing comma is an error.</li>
+      <li>To find an app’s bundle ID, run <code>osascript -e 'id of app "Safari"'</code> in Terminal.</li>
+    </ul>
+    <div class="callout"><span class="emo">🛟</span><p>A mistake can't lock you out. If the file can't be read, Netoff keeps using the previous rules, shows what is wrong and where (for example <code>hosts[2].action</code>), and leaves your file alone until it's valid again.</p></div>
+    <p>Changes you make in the app are written to the same file, so the two always agree — Netoff may tidy the formatting when it does. If you delete the file, Netoff recreates it from the current rules. Keep a copy before big edits.</p>
 
     <h2 id="uninstall">Uninstalling</h2>
     <ol>
@@ -521,6 +557,7 @@ SUPPORT = {
       <li><strong>域名 / IP 白名单</strong>：每个陌生的域名或 IP 都需要批准。在提示中可以只允许该地址、允许整个域名，或允许该应用的全部连接。在“应用”页把某个应用设为“允许”，表示完全信任，之后不再询问。</li>
     </ul>
     <div class="callout"><span class="emo">💡</span><p>批准提示从出现时开始倒计时 120 秒。如果没有回应，只会拒绝这一次连接，不会生成规则。</p></div>
+    <p>更习惯用文本编辑器？规则保存在一个可直接编辑的普通文件中，详见<a href="#rules-file">编辑规则文件</a>。</p>
 
     <h2 id="trouble">疑难解答</h2>
     <details open><summary>状态一直显示“正在连接…”，或保护无法开启</summary><div class="a"><p>请确认在 系统设置 › 通用 › 登录项与扩展 › 网络扩展 中，Netoff 的开关已打开。然后在 Netoff 中关闭再重新开启保护。如果仍无效，打开 设置 › 网络扩展 › <strong>重新安装扩展</strong>，若 macOS 提示，请重启 Mac。</p></div></details>
@@ -530,6 +567,41 @@ SUPPORT = {
     <details><summary>连接日志提示不可用</summary><div class="a"><p>日志由网络扩展保存，因此需要开启保护才能查看。开启保护后重新打开“连接日志”标签页即可。</p></div></details>
     <details><summary>收不到通知</summary><div class="a"><p>请检查 Netoff 设置中的“通知”，以及 系统设置 › 通知 中是否允许 Netoff 发送通知。每个被阻止的应用只会触发一次通知，重新允许再阻止后会再次提醒。</p></div></details>
     <details><summary>能和 VPN 或代理应用一起使用吗？</summary><div class="a"><p>Netoff 在这台 Mac 上按应用过滤连接。使用 VPN 或代理应用时，它们自己的连接会显示在该应用名下。其他过滤工具可能产生意料之外的相互影响；如果发现异常，请先关闭其他工具，并告诉我们观察到的情况。</p></div></details>
+
+    <h2 id="rules-file">编辑规则文件</h2>
+    <p>Netoff 把规则保存在一个可以直接打开和编辑的纯文本文件中：<code>~/Library/Application Support/Netoff/rules.json</code>。可以点击“应用”或“域名与 IP”页工具栏里的文档按钮打开，也可以在 设置 › 规则文件 中打开。保存文件后，Netoff 会<strong>立即</strong>应用新规则，无需重启。<strong>重新载入规则</strong>按钮可随时再读取一次。</p>
+    <h3>示例</h3>
+    <pre><code>{{
+  "mode": "blocklist",
+  "allowSystemServices": true,
+  "allowWhenNoUI": true,
+  "logRetention": "days7",
+  "apps": [
+    {{ "app": "com.apple.Safari", "action": "deny", "expires": null }},
+    {{ "app": "/usr/bin/curl", "action": "deny", "expires": "2026-10-20T18:00:00Z" }}
+  ],
+  "hosts": [
+    {{ "pattern": "*.example.com", "action": "deny", "app": null }},
+    {{ "pattern": "*", "action": "allow", "app": "com.google.Chrome" }}
+  ]
+}}</code></pre>
+    <h3>各个键的含义</h3>
+    <table>
+      <tr><th>键</th><th>含义</th></tr>
+      <tr><td><code>mode</code></td><td><code>"blocklist"</code>、<code>"appAllowlist"</code> 或 <code>"hostAllowlist"</code></td></tr>
+      <tr><td><code>allowSystemServices</code>、<code>allowWhenNoUI</code></td><td><code>true</code> 或 <code>false</code>，对应 设置 › 白名单模式 里的两个选项</td></tr>
+      <tr><td><code>logRetention</code></td><td><code>"off"</code>、<code>"days7"</code>、<code>"days14"</code>、<code>"days30"</code>、<code>"mb5"</code>、<code>"mb10"</code> 或 <code>"mb200"</code></td></tr>
+      <tr><td><code>apps[]</code></td><td>每个应用一条规则。<code>app</code> 是 Bundle ID（如 <code>com.apple.Safari</code>）或应用的路径；<code>action</code> 是 <code>"allow"</code> 或 <code>"deny"</code>；<code>expires</code> 可选。<code>name</code> 和 <code>path</code> 是可选的标注。</td></tr>
+      <tr><td><code>hosts[]</code></td><td>每个地址一条规则。<code>pattern</code> 可以是域名（<code>example.com</code>）、含所有子域名的域名（<code>*.example.com</code>）、IP 地址，或表示全部的 <code>*</code>。<code>app</code> 把规则限定给某个应用，<code>null</code> 表示所有应用。</td></tr>
+    </table>
+    <ul>
+      <li>省略的键会使用默认值，所以只有 <code>hosts</code> 列表的文件也是有效的。</li>
+      <li>日期写成 <code>2026-10-20T18:00:00Z</code> 这样（UTC）。用 <code>null</code> 表示永不过期。过期的规则会被自动移除。</li>
+      <li>JSON 不支持注释，末尾多余的逗号会被视为错误。</li>
+      <li>想查某个应用的 Bundle ID，可在“终端”中运行 <code>osascript -e 'id of app "Safari"'</code>。</li>
+    </ul>
+    <div class="callout"><span class="emo">🛟</span><p>写错了也不会把自己锁在外面。如果文件无法读取，Netoff 会继续使用之前的规则，并指出错在哪里（例如 <code>hosts[2].action</code>），在文件重新有效之前不会改动它。</p></div>
+    <p>在应用中所做的修改也会写入同一个文件，两边始终一致，写入时 Netoff 可能会整理格式。如果删除了该文件，Netoff 会根据当前规则重新生成。大幅修改前，建议先备份一份。</p>
 
     <h2 id="uninstall">卸载</h2>
     <ol>

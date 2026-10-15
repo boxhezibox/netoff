@@ -52,6 +52,7 @@
       <li><strong>域名 / IP 白名单</strong>：每个陌生的域名或 IP 都需要批准。在提示中可以只允许该地址、允许整个域名，或允许该应用的全部连接。在“应用”页把某个应用设为“允许”，表示完全信任，之后不再询问。</li>
     </ul>
     <div class="callout"><span class="emo">💡</span><p>批准提示从出现时开始倒计时 120 秒。如果没有回应，只会拒绝这一次连接，不会生成规则。</p></div>
+    <p>更习惯用文本编辑器？规则保存在一个可直接编辑的普通文件中，详见<a href="#rules-file">编辑规则文件</a>。</p>
 
     <h2 id="trouble">疑难解答</h2>
     <details open><summary>状态一直显示“正在连接…”，或保护无法开启</summary><div class="a"><p>请确认在 系统设置 › 通用 › 登录项与扩展 › 网络扩展 中，Netoff 的开关已打开。然后在 Netoff 中关闭再重新开启保护。如果仍无效，打开 设置 › 网络扩展 › <strong>重新安装扩展</strong>，若 macOS 提示，请重启 Mac。</p></div></details>
@@ -61,6 +62,41 @@
     <details><summary>连接日志提示不可用</summary><div class="a"><p>日志由网络扩展保存，因此需要开启保护才能查看。开启保护后重新打开“连接日志”标签页即可。</p></div></details>
     <details><summary>收不到通知</summary><div class="a"><p>请检查 Netoff 设置中的“通知”，以及 系统设置 › 通知 中是否允许 Netoff 发送通知。每个被阻止的应用只会触发一次通知，重新允许再阻止后会再次提醒。</p></div></details>
     <details><summary>能和 VPN 或代理应用一起使用吗？</summary><div class="a"><p>Netoff 在这台 Mac 上按应用过滤连接。使用 VPN 或代理应用时，它们自己的连接会显示在该应用名下。其他过滤工具可能产生意料之外的相互影响；如果发现异常，请先关闭其他工具，并告诉我们观察到的情况。</p></div></details>
+
+    <h2 id="rules-file">编辑规则文件</h2>
+    <p>Netoff 把规则保存在一个可以直接打开和编辑的纯文本文件中：<code>~/Library/Application Support/Netoff/rules.json</code>。可以点击“应用”或“域名与 IP”页工具栏里的文档按钮打开，也可以在 设置 › 规则文件 中打开。保存文件后，Netoff 会<strong>立即</strong>应用新规则，无需重启。<strong>重新载入规则</strong>按钮可随时再读取一次。</p>
+    <h3>示例</h3>
+    <pre><code>{
+  "mode": "blocklist",
+  "allowSystemServices": true,
+  "allowWhenNoUI": true,
+  "logRetention": "days7",
+  "apps": [
+    { "app": "com.apple.Safari", "action": "deny", "expires": null },
+    { "app": "/usr/bin/curl", "action": "deny", "expires": "2026-10-20T18:00:00Z" }
+  ],
+  "hosts": [
+    { "pattern": "*.example.com", "action": "deny", "app": null },
+    { "pattern": "*", "action": "allow", "app": "com.google.Chrome" }
+  ]
+}</code></pre>
+    <h3>各个键的含义</h3>
+    <table>
+      <tr><th>键</th><th>含义</th></tr>
+      <tr><td><code>mode</code></td><td><code>"blocklist"</code>、<code>"appAllowlist"</code> 或 <code>"hostAllowlist"</code></td></tr>
+      <tr><td><code>allowSystemServices</code>、<code>allowWhenNoUI</code></td><td><code>true</code> 或 <code>false</code>，对应 设置 › 白名单模式 里的两个选项</td></tr>
+      <tr><td><code>logRetention</code></td><td><code>"off"</code>、<code>"days7"</code>、<code>"days14"</code>、<code>"days30"</code>、<code>"mb5"</code>、<code>"mb10"</code> 或 <code>"mb200"</code></td></tr>
+      <tr><td><code>apps[]</code></td><td>每个应用一条规则。<code>app</code> 是 Bundle ID（如 <code>com.apple.Safari</code>）或应用的路径；<code>action</code> 是 <code>"allow"</code> 或 <code>"deny"</code>；<code>expires</code> 可选。<code>name</code> 和 <code>path</code> 是可选的标注。</td></tr>
+      <tr><td><code>hosts[]</code></td><td>每个地址一条规则。<code>pattern</code> 可以是域名（<code>example.com</code>）、含所有子域名的域名（<code>*.example.com</code>）、IP 地址，或表示全部的 <code>*</code>。<code>app</code> 把规则限定给某个应用，<code>null</code> 表示所有应用。</td></tr>
+    </table>
+    <ul>
+      <li>省略的键会使用默认值，所以只有 <code>hosts</code> 列表的文件也是有效的。</li>
+      <li>日期写成 <code>2026-10-20T18:00:00Z</code> 这样（UTC）。用 <code>null</code> 表示永不过期。过期的规则会被自动移除。</li>
+      <li>JSON 不支持注释，末尾多余的逗号会被视为错误。</li>
+      <li>想查某个应用的 Bundle ID，可在“终端”中运行 <code>osascript -e 'id of app "Safari"'</code>。</li>
+    </ul>
+    <div class="callout"><span class="emo">🛟</span><p>写错了也不会把自己锁在外面。如果文件无法读取，Netoff 会继续使用之前的规则，并指出错在哪里（例如 <code>hosts[2].action</code>），在文件重新有效之前不会改动它。</p></div>
+    <p>在应用中所做的修改也会写入同一个文件，两边始终一致，写入时 Netoff 可能会整理格式。如果删除了该文件，Netoff 会根据当前规则重新生成。大幅修改前，建议先备份一份。</p>
 
     <h2 id="uninstall">卸载</h2>
     <ol>

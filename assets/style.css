@@ -177,6 +177,7 @@ details .a p:last-child { margin-bottom: 0; }
 .doc .summary { background: var(--yellow); border-radius: 16px; padding: 22px 26px; margin: 36px auto 0; max-width: 760px; font-size: 18px; }
 .doc .summary p:last-child { margin: 0; }
 .doc article { max-width: 760px; margin: 0 auto; padding-top: 12px; }
+.doc [id] { scroll-margin-top: 84px; }
 .doc h2 { font-size: 28px; margin: 48px 0 14px; }
 .doc h3 { font-size: 20px; margin: 28px 0 8px; }
 .doc ul { padding-left: 1.3em; margin: 0 0 1em; }
@@ -185,6 +186,8 @@ details .a p:last-child { margin-bottom: 0; }
 .doc table { border-collapse: collapse; width: 100%; margin: 16px 0 24px; font-size: 15.5px; }
 .doc th, .doc td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
 .doc th { font-weight: 600; background: var(--bg-soft); }
+.doc pre { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; overflow-x: auto; font-size: 13.5px; line-height: 1.55; margin: 12px 0 22px; }
+.doc pre code { background: none; border: 0; padding: 0; font-size: inherit; }
 .callout { display: flex; gap: 14px; background: var(--blue); border-radius: 14px; padding: 18px 20px; margin: 22px 0; }
 .callout .emo { font-size: 22px; line-height: 1.4; }
 .callout p { margin: 0; }
