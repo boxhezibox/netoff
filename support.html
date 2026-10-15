@@ -64,7 +64,7 @@
     <details><summary>Does it work with a VPN or proxy app?</summary><div class="a"><p>Netoff filters connections app by app on your Mac. If you use a VPN or proxy app, its own connections show up under that app's name. Other filtering tools can interact in unexpected ways; if something looks wrong, turn the others off and tell us what you saw.</p></div></details>
 
     <h2 id="rules-file">Editing the rules file</h2>
-    <p>Netoff keeps your rules in a plain text file that you can open and edit: <code>~/Library/Application Support/Netoff/rules.json</code>. Open it with the document button in the toolbar of the Apps or Domains &amp; IPs page, or from Settings › Rules File. When you save it, Netoff applies the new rules <strong>immediately</strong> — no restart. The <strong>Reload Rules</strong> button reads it again on demand.</p>
+    <p>Netoff keeps your rules in a plain text file that you can open and edit: <code>~/Library/Containers/com.netoff.mac.app/Data/Library/Application Support/Netoff/rules.json</code>. Open it with the document button in the toolbar of the Apps or Domains &amp; IPs page, or from Settings › Rules File. Prefer a folder of your own (say, iCloud Drive or a dotfiles repo)? Choose <strong>Choose Folder…</strong> in Settings › Rules File, and Netoff keeps <code>rules.json</code> there instead. When you save it, Netoff applies the new rules <strong>immediately</strong> — no restart. The <strong>Reload Rules</strong> button reads it again on demand.</p>
     <h3>Example</h3>
     <pre><code>{
   "mode": "blocklist",

@@ -337,7 +337,7 @@ PRIVACY = {
     <p>Everything below is stored only on your Mac, in Netoff's own storage. None of it is uploaded.</p>
     <table>
       <tr><th>Data</th><th>Why</th><th>How long</th></tr>
-      <tr><td>Your rules: blocked and allowed apps, domains and IP addresses, and your settings — kept as a readable file you can open and edit (<code>~/Library/Application Support/Netoff/rules.json</code>)</td><td>To enforce your choices</td><td>Until you change or reset them</td></tr>
+      <tr><td>Your rules: blocked and allowed apps, domains and IP addresses, and your settings — kept as a readable file you can open and edit (<code>~/Library/Containers/com.netoff.mac.app/Data/Library/Application Support/Netoff/rules.json</code>)</td><td>To enforce your choices</td><td>Until you change or reset them</td></tr>
       <tr><td>Activity list (open connections and the last few minutes)</td><td>To show what is happening now</td><td>Kept in memory only; gone when you quit Netoff</td></tr>
       <tr><td>Privacy report: which apps contacted which domains, with counts</td><td>To show the Privacy Report</td><td>7 days, then removed automatically</td></tr>
       <tr><td>Connection log: one entry per connection</td><td>To let you review past connections</td><td>As you choose: off, 7, 14 or 30 days, or a size cap of 5, 10 or 200&nbsp;MB. The size cap is a hard limit — the oldest entries are removed so the log never exceeds it. Default: 7 days</td></tr>
@@ -399,7 +399,7 @@ PRIVACY = {
     <p>以下内容全部只保存在这台 Mac 上 Netoff 自己的存储空间中，不会上传。</p>
     <table>
       <tr><th>数据</th><th>用途</th><th>保留时间</th></tr>
-      <tr><td>规则：被阻止和被允许的应用、域名、IP 地址，以及设置，保存为可直接打开和编辑的文件（<code>~/Library/Application Support/Netoff/rules.json</code>）</td><td>执行所做的选择</td><td>直到修改或重置</td></tr>
+      <tr><td>规则：被阻止和被允许的应用、域名、IP 地址，以及设置，保存为可直接打开和编辑的文件（<code>~/Library/Containers/com.netoff.mac.app/Data/Library/Application Support/Netoff/rules.json</code>）</td><td>执行所做的选择</td><td>直到修改或重置</td></tr>
       <tr><td>网络活动列表（当前连接和最近几分钟）</td><td>显示此刻的情况</td><td>仅保存在内存中，退出 Netoff 后消失</td></tr>
       <tr><td>隐私报告：哪些应用联系了哪些域名及次数</td><td>用于显示隐私报告</td><td>7 天，之后自动删除</td></tr>
       <tr><td>连接日志：每个连接一条记录</td><td>方便回顾过去的连接</td><td>由用户选择：关闭、7、14 或 30 天，或限制为 5、10、200&nbsp;MB。大小上限是硬上限，会删除最旧的记录以确保日志不超过它。默认 7 天</td></tr>
@@ -480,7 +480,7 @@ SUPPORT = {
     <details><summary>Does it work with a VPN or proxy app?</summary><div class="a"><p>Netoff filters connections app by app on your Mac. If you use a VPN or proxy app, its own connections show up under that app's name. Other filtering tools can interact in unexpected ways; if something looks wrong, turn the others off and tell us what you saw.</p></div></details>
 
     <h2 id="rules-file">Editing the rules file</h2>
-    <p>Netoff keeps your rules in a plain text file that you can open and edit: <code>~/Library/Application Support/Netoff/rules.json</code>. Open it with the document button in the toolbar of the Apps or Domains &amp; IPs page, or from Settings › Rules File. When you save it, Netoff applies the new rules <strong>immediately</strong> — no restart. The <strong>Reload Rules</strong> button reads it again on demand.</p>
+    <p>Netoff keeps your rules in a plain text file that you can open and edit: <code>~/Library/Containers/com.netoff.mac.app/Data/Library/Application Support/Netoff/rules.json</code>. Open it with the document button in the toolbar of the Apps or Domains &amp; IPs page, or from Settings › Rules File. Prefer a folder of your own (say, iCloud Drive or a dotfiles repo)? Choose <strong>Choose Folder…</strong> in Settings › Rules File, and Netoff keeps <code>rules.json</code> there instead. When you save it, Netoff applies the new rules <strong>immediately</strong> — no restart. The <strong>Reload Rules</strong> button reads it again on demand.</p>
     <h3>Example</h3>
     <pre><code>{{
   "mode": "blocklist",
@@ -569,7 +569,7 @@ SUPPORT = {
     <details><summary>能和 VPN 或代理应用一起使用吗？</summary><div class="a"><p>Netoff 在这台 Mac 上按应用过滤连接。使用 VPN 或代理应用时，它们自己的连接会显示在该应用名下。其他过滤工具可能产生意料之外的相互影响；如果发现异常，请先关闭其他工具，并告诉我们观察到的情况。</p></div></details>
 
     <h2 id="rules-file">编辑规则文件</h2>
-    <p>Netoff 把规则保存在一个可以直接打开和编辑的纯文本文件中：<code>~/Library/Application Support/Netoff/rules.json</code>。可以点击“应用”或“域名与 IP”页工具栏里的文档按钮打开，也可以在 设置 › 规则文件 中打开。保存文件后，Netoff 会<strong>立即</strong>应用新规则，无需重启。<strong>重新载入规则</strong>按钮可随时再读取一次。</p>
+    <p>Netoff 把规则保存在一个可以直接打开和编辑的纯文本文件中：<code>~/Library/Containers/com.netoff.mac.app/Data/Library/Application Support/Netoff/rules.json</code>。可以点击“应用”或“域名与 IP”页工具栏里的文档按钮打开，也可以在 设置 › 规则文件 中打开。想把文件放在自己的文件夹（例如 iCloud 云盘）？在 设置 › 规则文件 中点击<strong>选择文件夹…</strong>即可。保存文件后，Netoff 会<strong>立即</strong>应用新规则，无需重启。<strong>重新载入规则</strong>按钮可随时再读取一次。</p>
     <h3>示例</h3>
     <pre><code>{{
   "mode": "blocklist",

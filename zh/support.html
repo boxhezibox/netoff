@@ -64,7 +64,7 @@
     <details><summary>能和 VPN 或代理应用一起使用吗？</summary><div class="a"><p>Netoff 在这台 Mac 上按应用过滤连接。使用 VPN 或代理应用时，它们自己的连接会显示在该应用名下。其他过滤工具可能产生意料之外的相互影响；如果发现异常，请先关闭其他工具，并告诉我们观察到的情况。</p></div></details>
 
     <h2 id="rules-file">编辑规则文件</h2>
-    <p>Netoff 把规则保存在一个可以直接打开和编辑的纯文本文件中：<code>~/Library/Application Support/Netoff/rules.json</code>。可以点击“应用”或“域名与 IP”页工具栏里的文档按钮打开，也可以在 设置 › 规则文件 中打开。保存文件后，Netoff 会<strong>立即</strong>应用新规则，无需重启。<strong>重新载入规则</strong>按钮可随时再读取一次。</p>
+    <p>Netoff 把规则保存在一个可以直接打开和编辑的纯文本文件中：<code>~/Library/Containers/com.netoff.mac.app/Data/Library/Application Support/Netoff/rules.json</code>。可以点击“应用”或“域名与 IP”页工具栏里的文档按钮打开，也可以在 设置 › 规则文件 中打开。想把文件放在自己的文件夹（例如 iCloud 云盘）？在 设置 › 规则文件 中点击<strong>选择文件夹…</strong>即可。保存文件后，Netoff 会<strong>立即</strong>应用新规则，无需重启。<strong>重新载入规则</strong>按钮可随时再读取一次。</p>
     <h3>示例</h3>
     <pre><code>{
   "mode": "blocklist",
